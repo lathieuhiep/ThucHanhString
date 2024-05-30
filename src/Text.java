@@ -172,4 +172,59 @@ public class Text {
 
         System.out.println(gioBigWord);
     }
+
+    // Xóa dấu tiếng việt có trong chuỗi
+    public void delUnicode() {
+        String UNICODE = "áàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ"
+                + "ÁÀẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴĐ";
+        String NONUNICODE = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd"
+                + "AAAAAAAAAAAAAAAAAEEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOOOUUUUUUUUUUUYYYYYD";
+        String gioMoi = "";
+
+        System.out.println("Chuỗi bỏ kí tự tiếng việt: ");
+
+        for (int i = 0; i < text.length(); i++) {
+            char nam = text.charAt(i);
+
+            int index = UNICODE.indexOf(nam);
+
+            if ( index >= 0 ) {
+                gioMoi += NONUNICODE.charAt(index);
+            } else {
+                gioMoi += nam;
+            }
+        }
+
+        System.out.println(gioMoi);
+    }
+
+    // tổng 2 chuỗi
+    public void tinhTong(String soA, String soB) {
+        String gioTong = "";
+        String tongChuoiSo = "";
+        int gioNho = 0;
+
+        int doDaiSoA = soA.length() - 1;
+        int doDaiSoB = soB.length() - 1;
+
+        while (doDaiSoA >= 0 || doDaiSoB >= 0 || gioNho != 0 ) {
+            int chuSoA = (doDaiSoA >= 0) ? soA.charAt(doDaiSoA) - 48 : 0;
+            int chuSoB = (doDaiSoB >= 0) ? soB.charAt(doDaiSoB) - 48 : 0;
+
+            int tongChuSo = chuSoA + chuSoB + gioNho;
+            gioNho = tongChuSo / 10;
+            gioTong += tongChuSo % 10;
+
+            doDaiSoA--;
+            doDaiSoB--;
+        }
+
+        for (int i = gioTong.length() -1; i >= 0; i--) {
+            char nam = gioTong.charAt(i);
+
+            tongChuoiSo += nam;
+        }
+
+        System.out.println("Tổng 2 chuỗi số " + soA + " và " + soB + " là: " + tongChuoiSo);
+    }
 }

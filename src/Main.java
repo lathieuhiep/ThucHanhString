@@ -35,5 +35,14 @@ public class Main {
         Text text7 = new Text("Lap trinh huong doi tuong");
         System.out.println("Chuỗi ban đầu: " + text7.getText());
         text7.findBigWord();
+
+        System.out.println("\n");
+        Text text8 = new Text("Nguyễn Văn Thành");
+        System.out.println("Chuỗi ban đầu: " + text8.getText());
+        text8.delUnicode();
+
+        System.out.println("\n");
+        Text text9 = new Text("");
+        text9.tinhTong("123", "4598");
     }
 }
